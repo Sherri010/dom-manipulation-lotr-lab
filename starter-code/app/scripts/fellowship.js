@@ -177,25 +177,37 @@ function hornOfGondor() {
   // Boromir's been killed by the Uruk-hai!
   // put a linethrough on boromir's name
   // Remove Boromir from the Fellowship
+  alert("the horn of gondor has been blown Boromir's been killed by the Uruk-hai!");
+  document.getElementById('the-fellowship').firstChild.innerHTML="<strike>Boromir</strike>";
+  document.getElementById('the-fellowship').removeChild( document.getElementById('the-fellowship').firstChild);
 }
-
-
+hornOfGondor();
 // Part 10
 
 function itsDangerousToGoAlone(){
   // take Frodo and Sam out of the fellowship and move them to Mordor
+  var Frodo=document.getElementById('the-fellowship').children[6];
+  var Sam=document.getElementById('the-fellowship').children[7];
+  document.getElementsByTagName('article')[2].appendChild(Frodo);
+  document.getElementsByTagName('article')[2].appendChild(Sam);
   // add a div with an id of 'mount-doom' to Mordor
 }
 
-
+itsDangerousToGoAlone();
 // Part 11
 
 function weWantsIt() {
   // Create a div with an id of 'gollum' and add it to Mordor
   // Remove the ring from Frodo and give it to Gollum
   // Move Gollum into Mount Doom
+  var div=document.createElement('div');
+  div.setAttribute('id','gollum');
+  document.getElementsByTagName('article')[2].appendChild(div);
+  var ring=document.getElementById("the-rign");
+  document.getElementById('gollum').appendChild(ring);
 }
 
+weWantsIt();
 
 // Part 12
 
@@ -203,4 +215,22 @@ function thereAndBackAgain() {
   // remove Gollum and the Ring from the document
   // remove all the baddies from the document
   // Move all the hobbits back to the shire
+
+  document.getElementsByTagName('article')[2].removeChild(document.getElementById("gollum"));
+  //move all hobbits
+  shire=document.getElementsByTagName('article')[0];
+  var fellow=document.getElementById('the-fellowship')
+  var everyone=fellow.childNodes;
+  console.log("last")
+  for(var i=everyone.length-1;i>=0;i--){
+   //console.log(everyone[i])
+    if(everyone[i].classList.contains('hobbit')){
+       shire.appendChild(everyone[i]);
+    }
+    else {
+      fellow.removeChild(everyone[i]);
+    }
+  }
+  
 }
+thereAndBackAgain();
