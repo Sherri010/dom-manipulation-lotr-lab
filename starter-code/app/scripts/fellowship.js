@@ -88,12 +88,12 @@ function makeBuddies() {
   // create an aside tag
   // attach an unordered list of the 'buddies' in the aside
   // insert your aside as a child element of rivendell
+
   var aside=document.createElement('tag');
   var ul=document.createElement('ul');
   var li;
   for(var i=0;i<buddies.length;i++){
     li=document.createElement('li');
-    li.setAttribute('class','hobbit');
     li.textContent=buddies[i];
     ul.appendChild(li);
   }
@@ -117,8 +117,11 @@ beautifulStranger();
 
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
+  var rivendell=document.getElementsByTagName('article')[1];
+  var hobbits = document.getElementsByTagName('ul')[0];
+  rivendell.appendChild(hobbits);
 }
-
+leaveTheShire();
 
 // Part 7
 
@@ -127,9 +130,31 @@ function forgeTheFellowShip() {
   // create a new div called 'the-fellowship' within rivendell
   // add each hobbit and buddy one at a time to 'the-fellowship'
   // after each character is added make an alert that they have joined your party
+  var div=document.createElement('div');
+  div.setAttribute("id","the-fellowship");
+  var rivendell=document.getElementsByTagName('article')[1];
+  rivendell.appendChild(div); 
+  var hobsAndBuds= document.getElementsByTagName('ul');
+  var movingParty;
+
+  for(var i=0;i<hobsAndBuds.length;i++){
+    movingParty=hobsAndBuds[i].childNodes;  
+    console.log(movingParty);
+    var m; var j=0;
+    for(var j= movingParty.length-1; j>=0;j--)
+    { 
+      m = movingParty[j];
+     console.log(m);
+     document.getElementById('the-fellowship').appendChild(m);
+    // alert(m.textContent+ " joined the fellowship");
+
+  }
 }
 
 
+}
+
+forgeTheFellowShip();
 // Part 8
 
 
@@ -137,8 +162,13 @@ function theBalrog() {
   // change the 'Gandalf' textNode to 'Gandalf the White'
   // apply style to the element
   // make the background 'white', add a grey border
-}
+ var gandolf= document.getElementById('the-fellowship').children[4];
+ gandolf.textContent="Gandalf the White";
+ gandolf.style.bordeColor="grey";
+gandolf.style.backgroundColor="white"
 
+}
+theBalrog();
 
 // Part 9
 
