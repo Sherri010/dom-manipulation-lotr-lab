@@ -139,12 +139,10 @@ function forgeTheFellowShip() {
 
   for(var i=0;i<hobsAndBuds.length;i++){
     movingParty=hobsAndBuds[i].childNodes;  
-    console.log(movingParty);
     var m; var j=0;
     for(var j= movingParty.length-1; j>=0;j--)
     { 
       m = movingParty[j];
-     console.log(m);
      document.getElementById('the-fellowship').appendChild(m);
     // alert(m.textContent+ " joined the fellowship");
 
@@ -217,13 +215,12 @@ function thereAndBackAgain() {
   // Move all the hobbits back to the shire
 
   document.getElementsByTagName('article')[2].removeChild(document.getElementById("gollum"));
-  //move all hobbits
+  //moving all hobbits and deleting the rest
   shire=document.getElementsByTagName('article')[0];
   var fellow=document.getElementById('the-fellowship')
   var everyone=fellow.childNodes;
   console.log("last")
   for(var i=everyone.length-1;i>=0;i--){
-   //console.log(everyone[i])
     if(everyone[i].classList.contains('hobbit')){
        shire.appendChild(everyone[i]);
     }
@@ -231,6 +228,10 @@ function thereAndBackAgain() {
       fellow.removeChild(everyone[i]);
     }
   }
-  
+
+  // moving two hobbits from mordor
+  fellow=document.getElementsByTagName('article')[2];
+  shire.appendChild(fellow.firstChild.nextSibling);
+  shire.appendChild(fellow.lastChild);
 }
 thereAndBackAgain();
